@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputScript library="js" name="resources/js/locale.js" />
+    <link rel="stylesheet" href="layout.css" />
+</h:head>
+<h:body>
+	<div id="base">
+		<div id="title">
+			<h:outputText value="Admin Site" styleClass="sig" />
+		</div>
+		<div id="table">
+			<h:dataTable id="navigations" value="#{navigationBean.navigations}"
+				var="nav" styleClass="ax_table" columnClasses="tableSession">
+				<h:column>
+					<h:outputLink value="#{nav.url}">
+						<h:outputText value="#{nav.description}" styleClass="navigation" />
+					</h:outputLink>
+				</h:column>
+			</h:dataTable>
+		</div>
+		<!-- Center -->
+		<div id="center">
+		<h:form>
+			<p:growl id="growl" showDetail="true" life="30000" />
+			<h:outputText value="Votação dos restaurantes" styleClass="title" />
+			<br /><br />
+            <h:outputText value="Informe o dia" styleClass="textPlan"></h:outputText>
+            <br />
+		    <p:calendar id="dataVot" value="#{restauranteMBean.dataVotacao}"></p:calendar>
+            <br /><br />
+            <h:commandButton value="Verificar parciais" action="#{restauranteMBean.verificarVotos}"></h:commandButton>
+		    <br /><br />
+		  <p:panel style="width: 800px;"
+						rendered="#{restauranteMBean.votosModel != null}">
+						<p:barChart id="basic" value="#{restauranteMBean.votosModel}"
+							legendPosition="ne" title="Votação dos restaurantes"
+							style="width:780px" />
+		   </p:panel>
+		    </h:form>
+		</div>
+	</div>
+
+
+</h:body>
+</html>

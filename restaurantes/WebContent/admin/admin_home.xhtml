@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="layout.css" />
+</h:head>
+<h:body>
+	<div id="base">
+		<div id="title">
+		<h:outputText value="Admin Site" styleClass="sig"/>
+		</div>
+		<div id="table">
+			<h:dataTable id="navigations" value="#{navigationBean.navigations}"
+				var="nav" styleClass="ax_table" columnClasses="tableSession">
+				<h:column>
+					<h:outputLink value="#{nav.url}">
+						<h:outputText value="#{nav.description}" styleClass="navigation" />
+					</h:outputLink>
+				</h:column>
+			</h:dataTable>
+		</div>
+		<!-- Center -->
+		<div id="center">
+			<div id="form">
+				<h:outputText value="Administração de Restaurantes para DBServer" styleClass="title" />
+				<br /><br />
+				<div id="center1">
+				<h:graphicImage url="pics/restaurant.jpg"></h:graphicImage>
+				<br />
+				<h:outputLink value="restaurantes.jsf">
+					<h:outputText value="Restaurantes" styleClass="textRest" />
+				</h:outputLink>
+				</div>
+				<div id="center2">
+				<h:graphicImage url="pics/votacao.jpg"></h:graphicImage>
+				<br />
+				<h:outputLink value="votacao.jsf">
+					<h:outputText value="Votação" styleClass="textVot" />
+				</h:outputLink>
+			</div>
+			<div id="center3_2">
+				
+			</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</h:body>
+</html>

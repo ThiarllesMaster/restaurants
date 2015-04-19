@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+
+	<link rel="stylesheet" href="layout.css" />
+</h:head>
+<h:body>
+	<div id="base">
+		<div id="title">
+			<h:outputText value="Admin Site" styleClass="sig" />
+		</div>
+		<div id="table">
+			<h:dataTable id="navigations" value="#{navigationBean.navigations}"
+				var="nav" styleClass="ax_table" columnClasses="tableSession">
+				<h:column>
+					<h:outputLink value="#{nav.url}">
+						<h:outputText value="#{nav.description}" styleClass="navigation" />
+					</h:outputLink>
+				</h:column>
+			</h:dataTable>
+		</div>
+		<!-- Center -->
+		<div id="center">
+		<h:form>
+			<p:growl id="growl" showDetail="true" life="30000" />
+			<h:outputText value="Seleção dos restaurantes" styleClass="title" />
+			<br /><br />
+			<h:outputText value="Nome do profissional faminto" styleClass="textPlan"></h:outputText>
+            <br />
+            <h:inputText id="nomeUsuario" styleClass="inputNome" value="#{restauranteMBean.nomeUsuario}"></h:inputText>
+            <br />
+            <h:outputText value="Restaurantes cadastrados" styleClass="textTitle"></h:outputText>
+            <h:graphicImage url="pics/restaurante.jpg"></h:graphicImage>
+            <h:selectManyCheckbox value="#{restauranteMBean.opcoes}" styleClass="textPlan">
+            <f:selectItems value="#{restauranteMBean.nomesRestaurantes}"></f:selectItems>
+            </h:selectManyCheckbox>
+            <br />
+            <h:commandButton value="Selecione o Restaurante" action="#{restauranteMBean.processarVoto}"></h:commandButton>
+		    </h:form>
+		    
+		</div>
+		
+	</div>
+
+
+</h:body>
+</html>
